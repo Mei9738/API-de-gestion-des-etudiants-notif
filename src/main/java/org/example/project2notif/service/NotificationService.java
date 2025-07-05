@@ -7,22 +7,20 @@ import org.example.project2notif.mapper.NotificationMapper;
 import org.example.project2notif.repository.NotificationRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class NotificationService {
     private final NotificationRepository notificationRepository;
     private final NotificationMapper notificationMapper;
-    private final AlertService smsAlertService;
+    private final AlertService emailAlertService;
 
     public NotificationDto send(NotificationDto notificationDto) {
         log.info("Start Service: create");
         final var notification = notificationMapper.toEntity(notificationDto);
         final var result = notificationMapper.toDto(notificationRepository.save(notification));
-        smsAlertService.send(
-                Objects.toString(result.studentId(), null),
+        emailAlertService.send(
+                result.studentId(),
                 result
         );
 //        throw new RuntimeException("This is a test exception to simulate a failure in the notification service");

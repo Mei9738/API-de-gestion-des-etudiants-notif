@@ -32,6 +32,7 @@
         <springdoc.version>2.8.9</springdoc.version>
         <spring-cloud.version>2025.0.0</spring-cloud.version>
         <lombok.version>1.18.36</lombok.version>
+        <simple-java-mail.version>8.12.6</simple-java-mail.version>
     </properties>
 
     <dependencyManagement>
@@ -83,6 +84,10 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
